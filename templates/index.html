@@ -7,7 +7,7 @@
                     {% if count.value <= 20 %}
                     <h2>{{count.value}}. {{review.country}} {{ review.state }} {{ review.region_1 }} {{ review.variety }}</h2>
                     <p>{{review['description']}}</p>
-                    {#<span class="badge badge-primary">{{ review.created }} {{ review.id }} {{count.value}}</span>#}
+                    <h3>Review Rating: {{review.points}} - Wine Price: {{review.price}} - Wine ID {{review.id}}</h3>
                     <hr>
                     {% set count.value = count.value + 1 %}
                     {% endif %}

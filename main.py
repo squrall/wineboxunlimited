@@ -24,9 +24,16 @@ def wine_input():
 
     variety = request.form['variety']
     region = request.form['region']
+    min_rating = request.form['rating']
+    if(min_rating == ''):
+        min_rating = 0
+
+    price = request.form['price']
+    if(price == ''):
+        price = 0 ## Arbitrary large number
 
     conn = get_db_connection()
-    reviews = conn.execute('SELECT * FROM wine_reviews WHERE variety LIKE ? AND state LIKE ?',('%'+ variety +'%','%'+ region +'%')).fetchall()
+    reviews = conn.execute('SELECT * FROM wine_reviews WHERE variety LIKE ? AND state LIKE ? AND ? < price AND ? < points',('%'+ variety +'%','%'+ region +'%', price, min_rating)).fetchall()
     conn.close()
 
     customer_preference = variety
