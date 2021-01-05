@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        {% set count = namespace(value=1) %}
+        {% for review in reviews %}
+            {#% if review.variety == customer_preference %#}
+                    {% if count.value <= 20 %}
+                    <h2>{{count.value}}. {{review.country}} {{ review.state }} {{ review.region_1 }} {{ review.variety }}</h2>
+                    <p>{{review['description']}}</p>
+                    {#<span class="badge badge-primary">{{ review.created }} {{ review.id }} {{count.value}}</span>#}
+                    <hr>
+                    {% set count.value = count.value + 1 %}
+                    {% endif %}
+            {#% endif %#}
+        {% endfor %}
+{% endblock %}

@@ -1,0 +1,54 @@
+body {
+    background-color: #DDD;
+}
+h1 {
+    border: 2px #999 solid;
+    color: #444;
+    text-align: center;
+    padding: 10px;
+}
+
+div.wine-container {
+    border: 3px #888 solid;
+    background-color: #BBB;
+    border-radius: 3px;
+    width: 60%;
+    height: 400px;
+    padding: 2% 2%;
+    float: right;
+    overflow: auto;
+    margin-top: 2%;
+    margin-right: 1%;
+}
+
+div.input-container {
+    width: 30%;
+    float: left;
+    border: 3px #888 solid;
+    background-color: #BBB;
+    margin-top: 2%;
+    margin-left: 1%;
+}
+
+nav {
+    background-color: #777;
+    height: 40px;
+    border-radius: 3px;
+}
+
+nav ul li {
+    float: left;
+    display: inline;
+}
+
+nav a:link, nav a:visited{
+    color #FFF;
+    display: inline-block;
+	padding: 10px 25px;
+	height: 20px;
+    border-radius: 5px;
+}
+
+nav a:hover, nav a:active, nav .active a:link{
+    background-color: #AAA;
+}
