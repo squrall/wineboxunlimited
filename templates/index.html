@@ -21,7 +21,7 @@
 
 {% block graph %}
 
-        <p>This is a coupasdfle of graphs based on your input</p>
+        <p>This is a couple of graphs based on your input</p>
             <script type="text/javascript">
                 var graph = {{graphJSON | safe}};
                 Plotly.plot('bargraph', graph.data, graph.layout);
