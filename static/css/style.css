@@ -13,12 +13,34 @@ div.wine-container {
     background-color: #BBB;
     border-radius: 3px;
     width: 60%;
-    height: 550px;
+    height: 300px;
     padding: 2% 2%;
-    float: right;
+    float: top-right;
     overflow: auto;
     margin-top: 2%;
     margin-right: 1%;
+}
+
+div.graph1 {
+    border: 3px #888 solid;
+    background-color: #BBB;
+    border-radius: 3px;
+    width: 60%;
+    height: 300px;
+    padding: 2% 2%;
+    float: top-right;
+    overflow: auto;
+    margin-top: 2%;
+    margin-right: 1%;
+}
+
+div.graphs {
+    width: 30%;
+    float: left;
+    border: 3px #888 solid;
+    background-color: #BBB;
+    margin-top: 2%;
+    margin-left: 1%;
 }
 
 div.input-container {

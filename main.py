@@ -1,4 +1,10 @@
 import sqlite3
+import json
+import plotly
+import pandas as pd
+import numpy as np
+import plotly.graph_objs as go
+
 from flask import Flask, render_template, request, redirect
 
 def get_db_connection():
@@ -22,17 +28,17 @@ def index():
 @app.route('/wineinput', methods= ['POST'])
 def wine_input():
 
-    variety = request.form['variety']
-    region = request.form['region']
-    min_rating = request.form['rating']
+    variety = request.form['variety'].strip()
+    region = request.form['region'].strip()
+    min_rating = request.form['rating'].strip()
     if(min_rating == ''):
         min_rating = 0
 
-    min_price = request.form['min_price']
+    min_price = request.form['min_price'].strip()
     if min_price == '':
         min_price = 0 ## Arbitrary large number
 
-    max_price = request.form['max_price']
+    max_price = request.form['max_price'].strip()
     if max_price =='':
         max_price = 99999
     conn = get_db_connection()
@@ -41,4 +47,19 @@ def wine_input():
 
     customer_preference = variety
 
-    return render_template('index.html', reviews=reviews, customer_preference=customer_preference)
+    graphJSON = create_graph()
+
+    return render_template('index.html', reviews=reviews, customer_preference=customer_preference, graphJSON=graphJSON)
+
+def create_graph():
+
+    N = 40
+    x = np.linspace(0,1,N)
+    y = np.random.randn(N)
+    df = pd.DataFrame({'x':x, 'y':y}) # Sample Dataframe
+
+    graph = [go.Bar(x=df['x'],y=df['y'])]
+
+    graphJSON = json.dumps(graph, cls=plotly.utils.PlotlyJSONEncoder)
+
+    return graphJSON

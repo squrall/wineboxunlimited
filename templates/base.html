@@ -4,7 +4,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script>
     <!-- Bootstrap CSS -->
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
@@ -23,11 +25,11 @@
         <p>Welcome, please input two different wines you like, including variety and the region the wine is from.</p>
 
         <form action="/wineinput" method="post">
-            <label for="variety">Variety</label><br>
+            <label for="variety">Variety (Ex. - White Blend, Cabernet Sauvignon, Merlot)</label><br>
             <input type="text" name="variety"></input><br>
-            <label for="region">Region</label><br>
+            <label for="region">Country/US State (Ex. - Oregion, Italy, California, Spain)</label><br>
             <input type="text" name="region"></input><br>
-            <label for="rating">Minimum Rating </label><br>
+            <label for="rating">Minimum Rating (Only includes wines with a rating of 85 included) </label><br>
             <input type="text" name="rating"></input><br>
             <label for="min_price">Min Price</label><br>
             <input type="text" name="min_price"></input><br>
@@ -36,8 +38,15 @@
             <input type="submit" value="Find your perfect wines!"></input>
         </form>
     </div>
+
     <div class="wine-container">
+        <h1>List of Wines you might like</h1>
         {% block content %} {% endblock %}
+    </div>
+    <div class="graph1">
+        <h1>Graph of other wines in that area</h1>
+        {% block graph %} {% endblock %}
+
     </div>
 
     <!-- Optional JavaScript -->
@@ -45,5 +54,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
   </body>
+
 </html>

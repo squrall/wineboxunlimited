@@ -1,4 +1,4 @@
-/*DROP TABLE IF EXISTS wine_reviews;*/
+DROP TABLE IF EXISTS wine_reviews;
 
 CREATE TABLE wine_reviews
  (
