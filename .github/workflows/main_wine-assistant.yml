@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Python app to Azure Web App - wine-recommender
+name: Build and deploy Python app to Azure Web App - wine-assistant
 
 on:
   push:
@@ -18,17 +18,17 @@ jobs:
     - name: Set up Python version
       uses: actions/setup-python@v1
       with:
-        python-version: '3.7'
+        python-version: '3.8'
 
     - name: Build using AppService-Build
       uses: azure/appservice-build@v2
       with:
         platform: python
-        platform-version: '3.7'
+        platform-version: '3.8'
 
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'wine-recommender'
+        app-name: 'wine-assistant'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_9422fe804fcf45d68e5294b89bb91ebd }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_cdd85d208137412a83615ebae54b4a1f }}
