@@ -98,6 +98,7 @@ def create_region_graph(reviews):
     # Convert the figures to JSON
     # PlotlyJSONEncoder appropriately converts pandas, datetime, etc
     # objects to their JSON equivalents
-    graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
+    region_graph = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return graphJSON
+    return region_graph
+
