@@ -49,11 +49,10 @@
     </div>
     <div class="graph1">
         <h1>Graph of other wines in that area</h1>
-        {% block graph %} {% endblock %}
         <div id="bargraph">
-            <script type="text/javascript">
+        <script type="text/javascript">
                 var graph = {{graphJSON | safe}};
-                Plotly.plot("bargraph", graph, {});
+                Plotly.plot("bargraph", graph.data,graph.layout, {});
             </script>
         </div>
 

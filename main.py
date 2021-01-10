@@ -47,20 +47,36 @@ def wine_input():
 
     customer_preference = variety
 
-    graphJSON = create_graph(reviews)
+    graphJSON = create_graph()
 
     return render_template('index.html', reviews=reviews, customer_preference=customer_preference, graphJSON=graphJSON)
 
 def create_graph():
 
 
-    N = 10
-    x = np.linspace(0,10,N)
-    y = 5
-    df = pd.DataFrame({'x':x, 'y':y}) # Sample Dataframe
+    # N = 10
+    # x = np.linspace(0,10,N)
+    # y = 5
+    # df = pd.DataFrame({'x':x, 'y':y}) # Sample Dataframe
+    #
+    # graph = [go.Bar(x=df['x'],y=df['y'])]
+    graphs = dict(
+                data=[go.Bar(
+                        x=[10, 20, 30],
+                        y=[5, 10, 15],
+                    )
+                ],
+                layout=dict(
+                    title="Simple Bar",
+                    yaxis=dict(title="Count"),
+                    xaxis=dict(title="Wine Type")
+                )
+            )
 
-    graph = [go.Bar(x=df['x'],y=df['y'])]
 
-    graphJSON = json.dumps(graph, cls=plotly.utils.PlotlyJSONEncoder)
+    # Convert the figures to JSON
+    # PlotlyJSONEncoder appropriately converts pandas, datetime, etc
+    # objects to their JSON equivalents
+    graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
 
     return graphJSON
