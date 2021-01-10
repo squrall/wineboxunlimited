@@ -32,7 +32,7 @@ def wine_input():
     region = request.form['region'].strip()
     min_rating = request.form['rating'].strip()
     if(min_rating == ''):
-        min_rating = 0`
+        min_rating = 0
 
     min_price = request.form['min_price'].strip()
     if min_price == '':
@@ -70,6 +70,16 @@ def create_graph(reviews):
 
             count += 1
         y += 1
+
+    count = 0
+    while count < len(wine_location):
+        if wine_count[count] <= 5:
+            print(f"{count} {wine_location[count]} {wine_count[count]}")
+            del wine_count[count]
+            del wine_location[count]
+
+        count +=1
+
     print(f"{y} {wine_location} {wine_count}")
 
 
