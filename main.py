@@ -32,7 +32,7 @@ def wine_input():
     region = request.form['region'].strip()
     min_rating = request.form['rating'].strip()
     if(min_rating == ''):
-        min_rating = 0
+        min_rating = 0`
 
     min_price = request.form['min_price'].strip()
     if min_price == '':
