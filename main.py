@@ -73,12 +73,13 @@ def create_graph(reviews):
 
     count = 0
     while count < len(wine_location):
-        if wine_count[count] <= 5:
-            print(f"{count} {wine_location[count]} {wine_count[count]}")
-            del wine_count[count]
-            del wine_location[count]
+        if len(wine_location) > 20:
+            if wine_count[count] <= 20:
+                del wine_count[count]
+                del wine_location[count]
 
-        count +=1
+            else: count +=1
+        else: break
 
     print(f"{y} {wine_location} {wine_count}")
 
@@ -91,8 +92,8 @@ def create_graph(reviews):
                 ],
                 layout=dict(
                     title="Wine Count via Region",
-                    yaxis=dict(title="Wine Count"),
-                    xaxis=dict(title="Region")
+                    yaxis=dict(title="Wine Count")
+                    #xaxis=dict(title="Region")
                 )
             )
 
