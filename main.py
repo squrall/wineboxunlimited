@@ -47,29 +47,42 @@ def wine_input():
 
     customer_preference = variety
 
-    graphJSON = create_graph()
+    graphJSON = create_graph(reviews)
 
     return render_template('index.html', reviews=reviews, customer_preference=customer_preference, graphJSON=graphJSON)
 
-def create_graph():
+def create_graph(reviews):
+    y = 0
+    wine_location = []
+    wine_count = []
+
+    for review in reviews:
+
+        count = 0
+
+        if review[7] not in wine_location:
+            wine_location.append(review[7])
+            wine_count.append(0)
+
+        while count < len(wine_location):
+            if review[7] == wine_location[count]:
+                wine_count[count] += 1
+
+            count += 1
+        y += 1
+    print(f"{y} {wine_location} {wine_count}")
 
 
-    # N = 10
-    # x = np.linspace(0,10,N)
-    # y = 5
-    # df = pd.DataFrame({'x':x, 'y':y}) # Sample Dataframe
-    #
-    # graph = [go.Bar(x=df['x'],y=df['y'])]
     graphs = dict(
                 data=[go.Bar(
-                        x=[10, 20, 30],
-                        y=[5, 10, 15],
+                        x=wine_location,
+                        y=wine_count,
                     )
                 ],
                 layout=dict(
-                    title="Simple Bar",
-                    yaxis=dict(title="Count"),
-                    xaxis=dict(title="Wine Type")
+                    title="Wine Count via Region",
+                    yaxis=dict(title="Wine Count"),
+                    xaxis=dict(title="Region")
                 )
             )
 
