@@ -3,15 +3,13 @@
 {% block content %}
         {% set count = namespace(value=1) %}
         {% for review in reviews %}
-            {#% if review.variety == customer_preference %#}
-                    {% if count.value <= 20 %}
-                    <h2>{{count.value}}. {{review.country}} {{ review.state }} {{ review.region_1 }} {{ review.variety }}</h2>
-                    <p>{{review['description']}}</p>
-                    <h3>Review Rating: {{review.points}} - Wine Price: {{review.price}} - Winery: {{review.winery}} - Wine ID {{review.id}}</h3>
-                    <hr>
-                    {% set count.value = count.value + 1 %}
-                    {% endif %}
-            {#% endif %#}
+            {% if count.value <= 20 %}
+            <h2>{{count.value}}. {{review.country}} {{ review.state }} {{ review.region_1 }} {{ review.variety }}</h2>
+            <p>{{review['description']}}</p>
+            <h3>Review Rating: {{review.points}} - Wine Price: {{review.price}} - Winery: {{review.winery}} - Wine ID {{review.id}}</h3>
+            <hr>
+            {% set count.value = count.value + 1 %}
+            {% endif %}
         {% endfor %}
 {% endblock %}
 

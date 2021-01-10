@@ -45,13 +45,11 @@ def wine_input():
     reviews = conn.execute('SELECT * FROM wine_reviews WHERE variety LIKE ? AND state LIKE ? AND price BETWEEN ? AND ? AND ? < points',('%'+ variety +'%','%'+ region +'%', min_price, max_price, min_rating)).fetchall()
     conn.close()
 
-    customer_preference = variety
+    region_graph = create_region_graph(reviews)
 
-    graphJSON = create_graph(reviews)
+    return render_template('index.html', reviews=reviews, graphJSON=region_graph)
 
-    return render_template('index.html', reviews=reviews, customer_preference=customer_preference, graphJSON=graphJSON)
-
-def create_graph(reviews):
+def create_region_graph(reviews):
     y = 0
     wine_location = []
     wine_count = []
@@ -95,8 +93,7 @@ def create_graph(reviews):
                     yaxis=dict(title="Wine Count")
                     #xaxis=dict(title="Region")
                 )
-            )
-
+           )
 
     # Convert the figures to JSON
     # PlotlyJSONEncoder appropriately converts pandas, datetime, etc
