@@ -47,15 +47,16 @@ def wine_input():
 
     customer_preference = variety
 
-    graphJSON = create_graph()
+    graphJSON = create_graph(reviews)
 
     return render_template('index.html', reviews=reviews, customer_preference=customer_preference, graphJSON=graphJSON)
 
 def create_graph():
 
-    N = 40
-    x = np.linspace(0,1,N)
-    y = np.random.randn(N)
+
+    N = 10
+    x = np.linspace(0,10,N)
+    y = 5
     df = pd.DataFrame({'x':x, 'y':y}) # Sample Dataframe
 
     graph = [go.Bar(x=df['x'],y=df['y'])]
