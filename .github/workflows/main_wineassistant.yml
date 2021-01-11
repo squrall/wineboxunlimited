@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Python app to Azure Web App - wine-assistant
+name: Build and deploy Python app to Azure Web App - wineassistant
 
 on:
   push:
@@ -29,6 +29,6 @@ jobs:
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'wine-assistant'
+        app-name: 'wineassistant'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_cdd85d208137412a83615ebae54b4a1f }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_1234d593d0ca4780a0d18ba9ae06ab83 }}
