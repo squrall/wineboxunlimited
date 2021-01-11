@@ -48,14 +48,15 @@
         {% block content %} {% endblock %}
     </div>
     <div class="graph1">
-        <h1>Graph of other regions with that variety of wine.</h1>
+        <h1>Other Regions with Your Variety of Wine</h1>
         <div id="bar-graph">
             <script type="text/javascript">
                 var graph = {{region_graph | safe}};
                 Plotly.plot("bar-graph", graph.data,graph.layout, {});
             </script>
         </div>
-        <h2> Hover over a dot to view the title of the wine. (rating, price)</h2>
+        <h1> Scatter Plot of Price and Review Rating</h1>
+        <p>Hover over a dot to view the title of the wine. (rating, price)</p>
         <div id="scatter-plot">
             <script type="text/javascript">
                 var graph = {{scatter_plot | safe}};
