@@ -49,13 +49,19 @@
     </div>
     <div class="graph1">
         <h1>Graph of other regions with that variety of wine.</h1>
-        <div id="bargraph">
-        <script type="text/javascript">
-                var graph = {{graphJSON | safe}};
-                Plotly.plot("bargraph", graph.data,graph.layout, {});
+        <div id="bar-graph">
+            <script type="text/javascript">
+                var graph = {{region_graph | safe}};
+                Plotly.plot("bar-graph", graph.data,graph.layout, {});
             </script>
         </div>
-
+        <h2> Hover over a dot to view the title of the wine. (rating, price)</h2>
+        <div id="scatter-plot">
+            <script type="text/javascript">
+                var graph = {{scatter_plot | safe}};
+                Plotly.plot("scatter-plot", graph.data,graph.layout, {});
+            </script>
+        </div>
     </div>
 
 

@@ -46,8 +46,9 @@ def wine_input():
     conn.close()
 
     region_graph = create_region_graph(reviews)
+    scatter_plot = create_scatter_plot(reviews)
 
-    return render_template('index.html', reviews=reviews, graphJSON=region_graph)
+    return render_template('index.html', reviews=reviews, region_graph=region_graph, scatter_plot=scatter_plot)
 
 def create_region_graph(reviews):
     y = 0
@@ -101,4 +102,39 @@ def create_region_graph(reviews):
     region_graph = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
 
     return region_graph
+
+def create_scatter_plot(reviews):
+
+    price_list = [] # index 6 = price in sql query
+    rating_list = [] # index 5 = rating in sql query
+    title_list = []
+
+    for review in reviews:
+        price_list.append(review[6])
+        rating_list.append(review[5])
+        title_list.append(review[11])
+    print(f"{price_list} {rating_list}")
+    scatter_plot_data = dict(
+        data=[go.Scatter(
+            x=rating_list,
+            y=price_list,
+            mode='markers',
+            textposition='top center',
+            text=title_list
+        )],
+        layout=dict(
+            title="Price to Rating Scatter Plot",
+            xaxis=dict(title="Rating"),
+            yaxis=dict(title="Price"),
+            hovermode='closest'
+        )
+    )
+
+    # Convert the figures to JSON
+    # PlotlyJSONEncoder appropriately converts pandas, datetime, etc
+    # objects to their JSON equivalents
+    scatter_plot = json.dumps(scatter_plot_data, cls=plotly.utils.PlotlyJSONEncoder)
+
+    return scatter_plot
+
 
